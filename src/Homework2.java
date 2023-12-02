@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class Homework2 {
     public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class Homework2 {
         ex2(); // Выполняем задание №2
         ex3(); // Выполняем задание №3
     }
-
+    // Задание №1
     public static void ex1() {
         System.out.println("Задание №1");
         //Дан массив с массивом чисел внутри
@@ -39,6 +40,7 @@ public class Homework2 {
         System.out.println("Сумма всех элементов диагонали с левого нижнего угла к верхнему правому: " + leftDownToRightUpSum);
 
     }
+    // Задание №2
     public static void ex2() {
         System.out.println("\nЗадание №2");
         // Перевернуть массив(без сторонних классов), не создавая новый массив. Вывести на экран.
@@ -55,7 +57,20 @@ public class Homework2 {
         }
         System.out.println("Новое содержимое массива после переворачивания: " + Arrays.toString(numbers));
     }
+    // Задание №3
     public static void ex3() {
-
+        System.out.println("\nЗадание №3");
+        //Дан распределитель случайных чисел
+        Random random = new Random(1);
+        //Получение случайного числа
+        // int number = random.nextInt(1000);
+        int number = 0, round = 0;
+        //Написать код, генерирующий случайные числа до тех пор, пока не сгенерируется 999.
+        //Вывести номер попытки, с которой получилось получить случайным образом число 999.
+        while ( number != 999) {
+            number = random.nextInt(1000);
+            round++;
+        }
+        System.out.println("Число 999 сгенерировалось на " + round + " попытке");
     }
 }
