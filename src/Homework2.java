@@ -4,6 +4,7 @@ public class Homework2 {
     public static void main(String[] args) {
         ex1(); // Выполняем задание №1
         ex2(); // Выполняем задание №2
+        ex3(); // Выполняем задание №3
     }
 
     public static void ex1() {
@@ -53,5 +54,8 @@ public class Homework2 {
             } else break;
         }
         System.out.println("Новое содержимое массива после переворачивания: " + Arrays.toString(numbers));
+    }
+    public static void ex3() {
+
     }
 }
