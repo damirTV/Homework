@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class Homework2 {
     public static void main(String[] args) {
         ex1(); // Выполняем задание №1
+        ex2(); // Выполняем задание №2
     }
 
     public static void ex1() {
@@ -24,22 +25,23 @@ public class Homework2 {
         //Вывести на экран
 
         //С левого верхнего угла к нижнему правому
+        //С левого нижнего угла к верхнему правому
         int element = 0;
         int leftUpToRightDownSum = 0;
+        int leftDownToRightUpSum = 0;
         for (int[] row : arrayOfNumbers) {
-            leftUpToRightDownSum = leftUpToRightDownSum + row[element];
+            leftUpToRightDownSum += row[element];
+            leftDownToRightUpSum += row[row.length-element-1];
             element++;
         }
         System.out.println("Сумма всех элементов диагонали с левого верхнего угла к нижнему правому: " + leftUpToRightDownSum);
-
-        //С левого нижнего угла к верхнему правому
-        int leftDownToRightUpSum = 0;
-        element = arrayOfNumbers[0].length-1;
-        for (int[] row : arrayOfNumbers) {
-            leftDownToRightUpSum = leftDownToRightUpSum + row[element];
-            element--;
-        }
         System.out.println("Сумма всех элементов диагонали с левого нижнего угла к верхнему правому: " + leftDownToRightUpSum);
 
     }
+    public static void ex2() {
+        // Перевернуть массив(без сторонних классов), не создавая новый массив. Вывести на экран.
+        // "Перевернуть" - значит последние элементы становятся первыми и наоборот.
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    }
+
 }
