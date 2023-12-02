@@ -39,9 +39,19 @@ public class Homework2 {
 
     }
     public static void ex2() {
+        System.out.println("\nЗадание №2");
         // Перевернуть массив(без сторонних классов), не создавая новый массив. Вывести на экран.
         // "Перевернуть" - значит последние элементы становятся первыми и наоборот.
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        System.out.println("Исходное содержимое массива: " + Arrays.toString(numbers));
+        int number;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] != numbers[numbers.length-i-1]) {
+                number = numbers[i];
+                numbers[i] = numbers[numbers.length-i-1];
+                numbers[numbers.length-i-1] = number;
+            } else break;
+        }
+        System.out.println("Новое содержимое массива после переворачивания: " + Arrays.toString(numbers));
     }
-
 }
