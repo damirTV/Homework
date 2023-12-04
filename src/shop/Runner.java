@@ -30,10 +30,6 @@ public class Runner {
         for (Worker worker : workers) {
             worker.workerSay(worker.name);
         }
-
-
-
-        //System.out.println(items1[0].name);
     }
 }
 

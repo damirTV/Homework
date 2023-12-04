@@ -6,6 +6,8 @@ public class Worker {
     String name;
     int age;
     char gender;
+    public String position; // для работников в офисе
+    String skill; // для работников в офисе
     Item[] items;
     public Worker(String name, int age, char gender, Item[] items) {
         this.name = name;
@@ -18,4 +20,10 @@ public class Worker {
             System.out.println(name + ": смотрите какая у меня вещь - " + item.name + ".");
         }
     }
-}
+    // Для работников офиса
+    public Worker(String name, String position, String skill) {
+        this.name = name;
+        this.position = position;
+        this.skill = skill;
+    }
+ }
