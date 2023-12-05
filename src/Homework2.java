@@ -1,5 +1,3 @@
-import shop.Runner;
-
 import java.util.Arrays;
 import java.util.Random;
 public class Homework2 {
@@ -37,7 +35,6 @@ public class Homework2 {
         }
         System.out.println("Сумма всех элементов диагонали с левого верхнего угла к нижнему правому: " + leftUpToRightDownSum);
         System.out.println("Сумма всех элементов диагонали с левого нижнего угла к верхнему правому: " + leftDownToRightUpSum);
-
     }
     // Задание №2
     public static void ex2() {

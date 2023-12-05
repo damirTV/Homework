@@ -1,18 +1,12 @@
 package shop;
-
-import java.awt.*;
-import java.util.Arrays;
-
 //Создать класс Shop (магазин). У которого есть работники.
 //Магазин умеет печатать своих работников:
 //{Имя работника}: {возраст} лет, {мужчина или женщина}, список вещей: {набор вещей работника}
 public class Shop {
     Worker[] workers;
-
     public Shop(Worker[] workers) {
         this.workers = workers;
     }
-
     public void listOfWorkers() { // Печать сотрудников магазина
         for (Worker worker : workers) {
             System.out.print(worker.name + ": " + worker.age + ", " +
