@@ -3,11 +3,9 @@ package shop;
 //Работник умеет хвастаться своими вещами: брать по очереди вещь, и кричать:
 //{Имя работника}: смотрите какая у меня вещь - {имя вещи}.
 public class Worker {
-    String name;
+    public String name; // Публичное имя для использования в других пакетах
     int age;
     char gender;
-    public String position; // для работников в офисе
-    String skill; // для работников в офисе
     Item[] items;
     public Worker(String name, int age, char gender, Item[] items) {
         this.name = name;
@@ -19,11 +17,5 @@ public class Worker {
         for (Item item : items) {
             System.out.println(name + ": смотрите какая у меня вещь - " + item.name + ".");
         }
-    }
-    // Для работников офиса
-    public Worker(String name, String position, String skill) {
-        this.name = name;
-        this.position = position;
-        this.skill = skill;
     }
  }

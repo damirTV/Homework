@@ -1,5 +1,4 @@
 package office;
-
 public class Manager {
     String name;
     String position;
@@ -8,6 +7,6 @@ public class Manager {
         this.position = position;
     }
     public String say() {
-        return "Я ничего не успеваю, помогите!";
+        return "я ничего не успеваю, помогите!";
     }
 }

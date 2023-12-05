@@ -1,15 +1,11 @@
 package office;
-
 public class Secretary {
-    String name;
     String position;
-
-    public Secretary(String name, String position) {
-        this.name = name;
+    public Secretary(String position) {
         this.position = position;
     }
-    public String say(String bossName, String managerName, String securityName) {
-        return bossName + " не волнуйтесь, " + managerName + " все успеет. " +
-                securityName + " подождите!";
+    public String say(String nameBoss, String nameManager, String nameSecurity) {
+        return nameBoss + " не волнуйтесь, " + nameManager + " все успеет. " +
+                nameSecurity + " - подождите!";
     }
 }

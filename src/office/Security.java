@@ -1,5 +1,4 @@
 package office;
-
 public class Security {
     String name;
     String position;
@@ -10,6 +9,6 @@ public class Security {
     }
 
     public String say() {
-        return "Выдайте мне аванс";
+        return "прошу выдать мне аванс!";
     }
 }
