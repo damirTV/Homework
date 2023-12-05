@@ -1,11 +1,13 @@
 import java.util.Arrays;
 import java.util.Random;
+
 public class Homework2 {
     public static void main(String[] args) {
         ex1(); // Выполняем задание №1
         ex2(); // Выполняем задание №2
         ex3(); // Выполняем задание №3
     }
+
     // Задание №1
     public static void ex1() {
         System.out.println("Задание №1");
@@ -30,12 +32,16 @@ public class Homework2 {
         int leftDownToRightUpSum = 0;
         for (int[] row : arrayOfNumbers) {
             leftUpToRightDownSum += row[element];
-            leftDownToRightUpSum += row[row.length-element-1];
+            leftDownToRightUpSum += row[row.length - element - 1];
             element++;
         }
-        System.out.println("Сумма всех элементов диагонали с левого верхнего угла к нижнему правому: " + leftUpToRightDownSum);
-        System.out.println("Сумма всех элементов диагонали с левого нижнего угла к верхнему правому: " + leftDownToRightUpSum);
+        System.out.println("Сумма всех элементов диагонали с левого верхнего угла"
+                + " к нижнему правому: " + leftUpToRightDownSum);
+        System.out.println("Сумма всех элементов диагонали с левого нижнего угла"
+                + " к верхнему правому: "
+                + leftDownToRightUpSum);
     }
+
     // Задание №2
     public static void ex2() {
         System.out.println("\nЗадание №2");
@@ -45,14 +51,18 @@ public class Homework2 {
         System.out.println("Исходное содержимое массива: " + Arrays.toString(numbers));
         int number;
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] != numbers[numbers.length-i-1]) {
+            if (numbers[i] != numbers[numbers.length - i - 1]) {
                 number = numbers[i];
-                numbers[i] = numbers[numbers.length-i-1];
-                numbers[numbers.length-i-1] = number;
-            } else break;
+                numbers[i] = numbers[numbers.length - i - 1];
+                numbers[numbers.length - i - 1] = number;
+            } else {
+                break;
+            }
         }
-        System.out.println("Новое содержимое массива после переворачивания: " + Arrays.toString(numbers));
+        System.out.println("Новое содержимое массива после переворачивания: "
+                + Arrays.toString(numbers));
     }
+
     // Задание №3
     public static void ex3() {
         System.out.println("\nЗадание №3");
@@ -60,10 +70,11 @@ public class Homework2 {
         Random random = new Random(1);
         //Получение случайного числа
         // int number = random.nextInt(1000);
-        int number = 0, round = 0;
+        int number = 0;
+        int round = 0;
         //Написать код, генерирующий случайные числа до тех пор, пока не сгенерируется 999.
         //Вывести номер попытки, с которой получилось получить случайным образом число 999.
-        while ( number != 999) {
+        while (number != 999) {
             number = random.nextInt(1000);
             round++;
         }
