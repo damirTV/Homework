@@ -26,7 +26,7 @@ public class Tree {
     }
 
     static class DeciduousTree extends Tree { // Класс лиственных деревьев
-        private final boolean isLeaves;
+        private boolean isLeaves;
 
         public DeciduousTree(int age, boolean isLeaves) {
             super(age);
@@ -39,10 +39,12 @@ public class Tree {
 
         public void leavesFall() {
             System.out.println("Листья падают с дерева");
-            }
+            isLeaves = false;
+        }
 
         public void leavesGrow() {
             System.out.println("Листья растут");
+            isLeaves = true;
         }
     }
 
@@ -58,10 +60,10 @@ public class Tree {
         }
     }
 
-    class СoniferousTree extends Tree { // Класс хвойных деревьев
+    static class ConiferousTree extends Tree { // Класс хвойных деревьев
         private final String typeOfNeedles;
 
-        public СoniferousTree(int age, String typeOfNeedles) {
+        public ConiferousTree(int age, String typeOfNeedles) {
             super(age);
             this.typeOfNeedles = typeOfNeedles;
         }
@@ -71,17 +73,17 @@ public class Tree {
         }
     }
 
-    class PineTree extends СoniferousTree { // Класс сосна
+    static class PineTree extends ConiferousTree { // Класс сосна
 
-        public PineTree(int age, String typeOfNeedles) {
-            super(age, typeOfNeedles);
+        public PineTree(int age) {
+            super(age, "крупный");
         }
     }
 
-    class FirTree extends СoniferousTree { // Класс ель
+    static class FirTree extends ConiferousTree { // Класс ель
 
-        public FirTree(int age, String typeOfNeedles) {
-            super(age, typeOfNeedles);
+        public FirTree(int age) {
+            super(age, "мелкий");
         }
     }
 }
