@@ -33,7 +33,7 @@ public class Tree {
             this.isLeaves = isLeaves;
         }
 
-        public boolean getIsLeves() {
+        public boolean getIsLeaves() {
             return isLeaves;
         }
 

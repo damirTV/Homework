@@ -9,6 +9,9 @@ public class Homework3 {
         System.out.println();
         System.out.println("Задание №2");
         ex2();
+        System.out.println();
+        System.out.println("Задание №3");
+        ex3();
     }
 
     public static void ex1() {
@@ -70,5 +73,31 @@ public class Homework3 {
         Iphone15 iphone15 = new Iphone15();
         phoneFabric.createPhone(iphone15);
         iphone15.printSpec();
+    }
+
+    public static void ex3() {
+        //Задача: Пирамида наследования
+        //Создать классы Pyramid1, Pyramid2, Pyramid3.
+        //НЕОБХОДИМО НАСЛЕДОВАНИЕ С ИСПОЛЬЗОВАНИЕМ РОДИТЕЛЬСКИХ МЕТОДОВ!
+        // Создать метод print, который будет выводить следующий текст:
+        // M <- из Pyramid1
+        // MM <- из Pyramid2
+        // MMM <- из Pyramid3
+
+        //Т.е. при вызове pyramid1.print выведется:
+        // M
+        // MM
+        // MMM
+
+        //при вызове pyramid2.print выведется:
+        // MM
+        // MMM
+
+        //при вызове pyramid3.print выведется:
+        // MMM
+
+        //создать здесь pyramid1 и вызвать print
+        Pyramid3.Pyramid1 pyramid1 = new Pyramid3.Pyramid1();
+        pyramid1.print();
     }
 }
