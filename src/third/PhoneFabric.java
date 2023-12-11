@@ -1,4 +1,4 @@
-package homeworks.homework3;
+package third;
 
 //Создать фабрику, которая заполняет созданный телефон деталями
 //При создании телефона в нем нет комплектующих, как будто пустой пластиковый каркас,
@@ -16,14 +16,14 @@ package homeworks.homework3;
 
 class PhoneFabric {
 
-    public void createPhone(SamsungGalaxy samsungGalaxy) {
+    void createPhone(SamsungGalaxy samsungGalaxy) {
         samsungGalaxy.setOperationSystem("Android");
         samsungGalaxy.setBoard("j-108");
         samsungGalaxy.setBoardSize(new int[]{10, 21, 13});
         samsungGalaxy.setCamera(new String[]{"Samsung", "20x zoom"});
     }
 
-    public void createPhone(Iphone15 iphone15) {
+    void createPhone(Iphone15 iphone15) {
         iphone15.setOperationSystem("iPhone 15");
         iphone15.setBoard("7uik");
         iphone15.setBoardSize(new int[]{15, 12, 13});

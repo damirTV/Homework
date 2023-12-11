@@ -1,6 +1,6 @@
-package homeworks.homework3;
+package third;
 
-public class Homework3 {
+class Runner {
     public static void main(String[] args) {
         //В этом дз уже будет проверяться наличие корректных модификаторов доступа
         //у классов, атрибутов, методов
@@ -17,7 +17,7 @@ public class Homework3 {
         ex4();
     }
 
-    public static void ex1() {
+    static void ex1() {
         //Реализовать в Java следующую схему (в скобках свойства объектов)
         //У нас есть Дерево(возраст)
         //Деревья делятся на:
@@ -34,10 +34,11 @@ public class Homework3 {
         //
         //Создать в методе ex1 сосну, березу, ель. Положить в массив.
         //Посчитать их средний возраст.
+
         Tree[] trees = new Tree[3];
-        trees[0] = new Tree.Birch(1, true);
-        trees[1] = new Tree.Pine(2);
-        trees[2] = new Tree.Fir(1);
+        trees[0] = new Birch(1, true);
+        trees[1] = new Pine(2);
+        trees[2] = new Fir(1);
         double avgAge; // Средний возраст всех деревьев в массиве
         double sumAge = 0; // Сумма возрастов всех деревьев в массиве
         for (Tree element : trees) {
@@ -47,7 +48,7 @@ public class Homework3 {
         System.out.println("Средний возраст всех деревьев: " + avgAge);
     }
 
-    public static void ex2() {
+    static void ex2() {
         //Задача: Фабрика телефонов
         //Создать 2 типа телефонов и комплектующие к ним.
         //При печати телефона должны показываться все свойства телефона и вложенных объектов.
@@ -78,7 +79,7 @@ public class Homework3 {
         iphone15.printSpec();
     }
 
-    public static void ex3() {
+    static void ex3() {
         //Задача: Пирамида наследования
         //Создать классы Pyramid1, Pyramid2, Pyramid3.
         //НЕОБХОДИМО НАСЛЕДОВАНИЕ С ИСПОЛЬЗОВАНИЕМ РОДИТЕЛЬСКИХ МЕТОДОВ!
@@ -100,15 +101,15 @@ public class Homework3 {
         // MMM
 
         //создать здесь pyramid1 и вызвать print
-        Pyramid3.Pyramid1 pyramid1 = new Pyramid3.Pyramid1();
+        Pyramid1 pyramid1 = new Pyramid1();
         pyramid1.print();
     }
 
-    public static void ex4() {
+    static void ex4() {
         //Задача со звездочкой!: Лотерейный билет
         //Создать класс лотерейный билет (у объекта не может быть атрибутов)
         //создать метод проверить удачу (не принимает в себя аргументов!):
-        //каждый десятый билет дает 100 руб,
+        //каждый десятый билет дает 100 руб.
         //каждый сотый - 5_000,
         //иначе 0
         //Если совпало что билет одновременно десятый и сотый выбор в пользу сотого.
@@ -117,7 +118,7 @@ public class Homework3 {
         //Итоговая сумма выигрыша после проверки удачи 110 билетов должна составить 6_000.
 
         int prize = 0; // Размер выигрыша
-        int ticketQty = 110;
+        int ticketQty = 110; // Количество билетов
 
         for (int i = 1; i <= ticketQty; i++) {
             Lottery lottery = new Lottery();

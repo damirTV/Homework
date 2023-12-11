@@ -1,4 +1,4 @@
-package homeworks.homework3;
+package third;
 
 //Создать 2 типа телефонов и комплектующих к ним.
 //При печати телефона должны показываться все свойства телефона и вложенных объектов.
@@ -19,27 +19,28 @@ class SamsungGalaxy {
         this.model = "Android";
     }
 
-    public void setOperationSystem(String operationSystem) {
+    void setOperationSystem(String operationSystem) {
         this.operationSystem = operationSystem;
     }
 
-    public void setBoard(String board) {
+    void setBoard(String board) {
         this.board = board;
     }
 
-    public void setBoardSize(int[] boardSize) {
+    void setBoardSize(int[] boardSize) {
         this.boardSize = boardSize;
     }
 
-    public void setCamera(String[] camera) {
+    void setCamera(String[] camera) {
         this.camera = camera;
     }
 
-    public void printSpec() {
+    void printSpec() {
         System.out.println("Модель: " + model);
         System.out.println("Операционная система: " + operationSystem);
         System.out.println("Материнская плата: " + board);
-        System.out.printf("Размеры материнской платы: Ширина %s, Высота %s, Длина %s\n", boardSize[0], boardSize[1], boardSize[2]);
+        System.out.printf("Размеры материнской платы: Ширина %s, Высота %s, Длина %s\n",
+                boardSize[0], boardSize[1], boardSize[2]);
         System.out.printf("Камера: %s (%s)\n", camera[0], camera[1]);
     }
 }
