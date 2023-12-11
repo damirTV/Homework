@@ -12,6 +12,9 @@ public class Homework3 {
         System.out.println();
         System.out.println("Задание №3");
         ex3();
+        System.out.println();
+        System.out.println("Задание №4");
+        ex4();
     }
 
     public static void ex1() {
@@ -99,5 +102,28 @@ public class Homework3 {
         //создать здесь pyramid1 и вызвать print
         Pyramid3.Pyramid1 pyramid1 = new Pyramid3.Pyramid1();
         pyramid1.print();
+    }
+
+    public static void ex4() {
+        //Задача со звездочкой!: Лотерейный билет
+        //Создать класс лотерейный билет (у объекта не может быть атрибутов)
+        //создать метод проверить удачу (не принимает в себя аргументов!):
+        //каждый десятый билет дает 100 руб,
+        //каждый сотый - 5_000,
+        //иначе 0
+        //Если совпало что билет одновременно десятый и сотый выбор в пользу сотого.
+        //
+        //Создать здесь 110 билетов, и проверить по каждому удачу.
+        //Итоговая сумма выигрыша после проверки удачи 110 билетов должна составить 6_000.
+
+        int prize = 0; // Размер выигрыша
+        int ticketQty = 110;
+
+        for (int i = 1; i <= ticketQty; i++) {
+            Lottery lottery = new Lottery();
+            prize = prize + lottery.checkTicket();
+        }
+        System.out.println("Количество билетов: " + ticketQty);
+        System.out.println("Итоговая сумма выигрыша: " + prize);
     }
 }
