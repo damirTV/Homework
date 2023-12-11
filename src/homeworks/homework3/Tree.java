@@ -25,10 +25,10 @@ public class Tree {
         return age;
     }
 
-    static class DeciduousTree extends Tree { // Класс лиственных деревьев
+    static class Deciduous extends Tree { // Класс лиственных деревьев
         private boolean isLeaves;
 
-        public DeciduousTree(int age, boolean isLeaves) {
+        public Deciduous(int age, boolean isLeaves) {
             super(age);
             this.isLeaves = isLeaves;
         }
@@ -48,9 +48,9 @@ public class Tree {
         }
     }
 
-    static class BirchTree extends DeciduousTree { // Класс береза
+    static class Birch extends Deciduous { // Класс береза
 
-        public BirchTree(int age, boolean isLeaves) {
+        public Birch(int age, boolean isLeaves) {
             super(age, isLeaves);
         }
 
@@ -60,10 +60,10 @@ public class Tree {
         }
     }
 
-    static class ConiferousTree extends Tree { // Класс хвойных деревьев
+    static class Coniferous extends Tree { // Класс хвойных деревьев
         private final String typeOfNeedles;
 
-        public ConiferousTree(int age, String typeOfNeedles) {
+        public Coniferous(int age, String typeOfNeedles) {
             super(age);
             this.typeOfNeedles = typeOfNeedles;
         }
@@ -73,16 +73,16 @@ public class Tree {
         }
     }
 
-    static class PineTree extends ConiferousTree { // Класс сосна
+    static class Pine extends Coniferous { // Класс сосна
 
-        public PineTree(int age) {
+        public Pine(int age) {
             super(age, "крупный");
         }
     }
 
-    static class FirTree extends ConiferousTree { // Класс ель
+    static class Fir extends Coniferous { // Класс ель
 
-        public FirTree(int age) {
+        public Fir(int age) {
             super(age, "мелкий");
         }
     }

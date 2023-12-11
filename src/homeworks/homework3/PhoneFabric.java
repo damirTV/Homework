@@ -20,11 +20,13 @@ class PhoneFabric {
         samsungGalaxy.setOperationSystem("Android");
         samsungGalaxy.setBoard("j-108");
         samsungGalaxy.setBoardSize(new int[]{10, 21, 13});
+        samsungGalaxy.setCamera(new String[]{"Samsung", "20x zoom"});
     }
 
     public void createPhone(Iphone15 iphone15) {
         iphone15.setOperationSystem("iPhone 15");
         iphone15.setBoard("7uik");
         iphone15.setBoardSize(new int[]{15, 12, 13});
+        iphone15.setCamera(new String[]{"iphone", "15x zoom", "есть вспышка"});
     }
 }

@@ -29,9 +29,9 @@ public class Homework3 {
         //Создать в методе ex1 сосну, березу, ель. Положить в массив.
         //Посчитать их средний возраст.
         Tree[] trees = new Tree[3];
-        trees[0] = new Tree.BirchTree(1, true);
-        trees[1] = new Tree.PineTree(2);
-        trees[2] = new Tree.FirTree(1);
+        trees[0] = new Tree.Birch(1, true);
+        trees[1] = new Tree.Pine(2);
+        trees[2] = new Tree.Fir(1);
         double avgAge; // Средний возраст всех деревьев в массиве
         double sumAge = 0; // Сумма возрастов всех деревьев в массиве
         for (Tree element : trees) {
