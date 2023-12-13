@@ -7,13 +7,21 @@
     <copyLibs>true</copyLibs>
     <option name="thirdPartyClasspath" />
     <option name="activeLocationIds">
-      <option value="9ca74745-2309-4cde-a044-db58ea36e2e5" />
+      <option value="081aec9c-40ff-4807-b6b3-7fea0dc96bcd" />
     </option>
     <option name="locations">
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="9ca74745-2309-4cde-a044-db58ea36e2e5" type="LOCAL_FILE" scope="All" description="CodeStyle от Юры">
+          $PROJECT_DIR$/../google_checks.xml
+          <option name="properties">
+            <map>
+              <entry key="org.checkstyle.google.suppressionxpathfilter.config" value="" />
+            </map>
+          </option>
+        </ConfigurationLocation>
+        <ConfigurationLocation id="081aec9c-40ff-4807-b6b3-7fea0dc96bcd" type="LOCAL_FILE" scope="All" description="чекстайл от Юры">
           $PROJECT_DIR$/../google_checks.xml
           <option name="properties">
             <map>
