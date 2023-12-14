@@ -1,4 +1,4 @@
-package third;
+package third.ex1;
 
 class Coniferous extends Tree { // Класс хвойных деревьев
     private final String typeOfNeedles;

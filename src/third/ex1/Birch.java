@@ -1,6 +1,6 @@
-package third;
+package third.ex1;
 
-class Birch extends Deciduous { // Класс береза
+public class Birch extends Deciduous { // Класс береза
 
     public Birch(int age, boolean isLeaves) {
         super(age, isLeaves);

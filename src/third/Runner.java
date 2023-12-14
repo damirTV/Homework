@@ -1,6 +1,18 @@
 package third;
 
 import java.util.Arrays;
+import third.ex1.Birch;
+import third.ex1.Fir;
+import third.ex1.Pine;
+import third.ex1.Tree;
+import third.ex2.Iphone15;
+import third.ex2.PhoneFabric;
+import third.ex2.SamsungGalaxy;
+import third.ex3.Pyramid1;
+import third.ex4.Lottery;
+import third.ex5.City;
+import third.ex5.House;
+
 
 public class Runner {
     public static void main(String[] args) {

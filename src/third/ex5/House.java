@@ -1,6 +1,6 @@
-package third;
+package third.ex5;
 
-class House {
+public class House {
     private String street;
     private int number;
 

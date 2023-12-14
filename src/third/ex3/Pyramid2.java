@@ -1,4 +1,4 @@
-package third;
+package third.ex3;
 
 class Pyramid2 extends Pyramid3 {
 

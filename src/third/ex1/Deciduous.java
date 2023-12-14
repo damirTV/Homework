@@ -1,4 +1,4 @@
-package third;
+package third.ex1;
 
 class Deciduous extends Tree { // Класс лиственных деревьев
     private boolean isLeaves;

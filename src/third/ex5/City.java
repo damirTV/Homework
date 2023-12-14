@@ -1,4 +1,4 @@
-package third;
+package third.ex5;
 
 import java.util.Arrays;
 

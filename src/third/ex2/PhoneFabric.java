@@ -1,4 +1,4 @@
-package third;
+package third.ex2;
 
 //Создать фабрику, которая заполняет созданный телефон деталями
 //При создании телефона в нем нет комплектующих, как будто пустой пластиковый каркас,
@@ -14,16 +14,16 @@ package third;
 //2 Тип: Iphone 15. Имеет операционную систему Ios, плату 7uik(размер 15х12х13),
 //камеру iphone(15x zoom, есть вспышка).
 
-class PhoneFabric {
+public class PhoneFabric {
 
-    void createPhone(SamsungGalaxy samsungGalaxy) {
+    public void createPhone(SamsungGalaxy samsungGalaxy) {
         samsungGalaxy.setOperationSystem("Android");
         samsungGalaxy.setBoard("j-108");
         samsungGalaxy.setBoardSize(new int[]{10, 21, 13});
         samsungGalaxy.setCamera(new String[]{"Samsung", "20x zoom"});
     }
 
-    void createPhone(Iphone15 iphone15) {
+    public void createPhone(Iphone15 iphone15) {
         iphone15.setOperationSystem("iPhone 15");
         iphone15.setBoard("7uik");
         iphone15.setBoardSize(new int[]{15, 12, 13});
