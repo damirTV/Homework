@@ -2,7 +2,7 @@ package third;
 
 import java.util.Arrays;
 
-public class City {
+public final class City {
     private final String name;
     private final House[] houses;
 

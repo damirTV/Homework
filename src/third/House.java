@@ -11,7 +11,7 @@ class House {
 
     @Override
     public String toString() {
-        return street + " " + number;
+        return street + "-" + number;
     }
 
     public String getStreet() {

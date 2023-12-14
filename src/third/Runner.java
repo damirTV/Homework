@@ -1,5 +1,7 @@
 package third;
 
+import java.util.Arrays;
+
 public class Runner {
     public static void main(String[] args) {
         //В этом дз уже будет проверяться наличие корректных модификаторов доступа
@@ -153,7 +155,7 @@ public class Runner {
         System.out.println("Создан город: " + city1);
 
         house1.setStreet("NewStreet");
-        System.out.println("Новая улица в дом-1: " + house1);
-        System.out.println(city1);
+        System.out.println("Новый адрес дом-1: " + house1);
+        System.out.println("Адреса домов в городе: " + Arrays.toString(city1.getHouses()));
     }
 }
