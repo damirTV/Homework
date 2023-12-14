@@ -5,13 +5,13 @@ import java.util.Arrays;
 public final class City {
     private final String name;
     private final House[] houses;
-    private final House[] copyhouses;
+    private final House[] copyHouses;
 
     public City(String name, House[] houses) {
         this.name = name;
         this.houses = houses;
-        this.copyhouses = houses;
-        System.arraycopy(houses, 0, copyhouses, 0, houses.length);
+        this.copyHouses = houses;
+        System.arraycopy(houses, 0, copyHouses, 0, houses.length);
     }
 
     public String getName() {
@@ -19,7 +19,7 @@ public final class City {
     }
 
     public House[] getHouses() {
-        return copyhouses;
+        return copyHouses;
     }
 
     @Override
