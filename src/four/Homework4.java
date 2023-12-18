@@ -4,12 +4,26 @@ import four.ex1.Bus;
 import four.ex1.Car;
 import four.ex1.Vehicle;
 import four.ex1.Wash;
-import four.ex2.*;
+import four.ex2.Duck;
+import four.ex2.FlyException;
+import four.ex2.Flyable;
+import four.ex2.Plane;
+import four.ex3.Bird;
+import four.ex3.Builder;
+import four.ex3.Driver;
+import four.ex3.Human;
+import four.ex3.Sound;
+
 
 public class Homework4 {
     public static void main(String[] args) {
+        System.out.println();
         ex1();
+
+        System.out.println();
         ex2();
+
+        System.out.println();
         ex3();
     }
 
@@ -63,6 +77,20 @@ public class Homework4 {
         // Ошибка: утка ранена
         // самолет летит
         // Ошибка: пассажиров в самолете меньше 0
+
+        Duck duck1 = new Duck(false);
+        Duck duck2 = new Duck(true);
+        Plane plane1 = new Plane(10);
+        Plane plane2 = new Plane(-1);
+        Flyable[] flyable = {duck1, duck2, plane1, plane2};
+
+        for (Flyable value : flyable) {
+            try {
+                value.fly();
+            } catch (FlyException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static void ex3() {
@@ -74,15 +102,14 @@ public class Homework4 {
         //Сделать так, чтобы они все могли быть представлены к единому типу.
         //Создать в этом методе человека, строителя, водителя и птицу. Заставить их издать звуки.
         //Изданные звуки распечатать.
-        Human human = new Human();
-        Builder builder = new Builder(human);
-        Driver driver = new Driver(human);
-        Bird bird = new Bird();
+        Sound human = new Human();
+        Sound builder = new Builder(human);
+        Sound driver = new Driver();
+        Sound bird = new Bird();
+        Sound[] sounds = {human, builder, driver, bird};
 
-        Being[] beings = {human, builder, driver, bird};
-
-        for (Being being : beings) {
-            System.out.println(being.makeSound());
+        for (Sound sound : sounds) {
+            System.out.println(sound.makeSound());
         }
     }
 
