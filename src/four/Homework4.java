@@ -13,9 +13,17 @@ import four.ex3.Builder;
 import four.ex3.Driver;
 import four.ex3.Human;
 import four.ex3.Sound;
+import four.ex4.LogonException;
+import four.ex4.User;
 
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Homework4 {
+
+    public static User[] user = new User[100]; // Для 4-го задания
+    static int id = 1; // Для 4-го задания
+
     public static void main(String[] args) {
         System.out.println();
         ex1();
@@ -25,6 +33,9 @@ public class Homework4 {
 
         System.out.println();
         ex3();
+
+        System.out.println();
+        ex4();
     }
 
     public static void ex1() {
@@ -42,15 +53,15 @@ public class Homework4 {
         //5 автобусов(12х3х2.3)
         //Посчитать, сколько мэрия заплатит денег за мойку машин.
         Vehicle[] vehicles = {
-            new Car(false, new double[]{5, 2, 1.8}, true),
-            new Car(false, new double[]{5, 2, 1.8}, true),
-            new Car(false, new double[]{5, 2, 1.8}, false),
-            new Car(false, new double[]{5, 2, 1.8}, true),
-            new Bus(false, new double[]{12, 3, 2.3}, 10),
-            new Bus(false, new double[]{12, 3, 2.3}, 12),
-            new Bus(false, new double[]{12, 3, 2.3}, 10),
-            new Bus(false, new double[]{12, 3, 2.3}, 8),
-            new Bus(false, new double[]{12, 3, 2.3}, 8)
+                new Car(false, new double[]{5, 2, 1.8}, true),
+                new Car(false, new double[]{5, 2, 1.8}, true),
+                new Car(false, new double[]{5, 2, 1.8}, false),
+                new Car(false, new double[]{5, 2, 1.8}, true),
+                new Bus(false, new double[]{12, 3, 2.3}, 10),
+                new Bus(false, new double[]{12, 3, 2.3}, 12),
+                new Bus(false, new double[]{12, 3, 2.3}, 10),
+                new Bus(false, new double[]{12, 3, 2.3}, 8),
+                new Bus(false, new double[]{12, 3, 2.3}, 8)
         };
         Wash wash1 = new Wash();
         System.out.println(wash1.washingVehicles(vehicles));
@@ -148,6 +159,106 @@ public class Homework4 {
         //"прочитать" - запуск функции "прочитать письмо"
         //"exit" - окончание работы программы
         //Ошибки в результате работы команд должны быть обработаны, и не должны заканчивать работу программы.
+
+        user[0] = new User("", ""); // Создание текущего пользователя
+        start(id);
+    }
+
+    public static void start(int id) {
+        System.out.println("Добро пожаловать в OneGramChat!");
+        startMenu();
+        Scanner in = new Scanner(System.in);
+        int number = 0;
+        while (number != 7) {
+            number = in.nextInt();
+            switch (number) {
+                case (1): {
+                    try {
+                        logonUser();
+                    } catch (LogonException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    startMenu();
+                    break;
+                }
+                case (2): {
+                    createUser(id);
+                    id++;
+                    number = 0;
+                    startMenu();
+                    break;
+                }
+                case (6): {
+                    listUsers();
+                    number = 0;
+                    startMenu();
+                    break;
+                }
+            }
+        }
+        in.close();
+    }
+
+    public static void logonUser() throws LogonException {
+        Scanner logonUser = new Scanner(System.in);
+        System.out.println();
+        System.out.print("Введите имя пользователя: ");
+        String name = logonUser.nextLine();
+        System.out.print("Введите пароль пользователя: ");
+        String pwd = logonUser.nextLine();
+        for (int i = 1; i < user.length; i++) {
+            if (user[i].getNameUser() == name) {
+                user[0].setNameUser(name);
+                user[0].setPwdUser(pwd);
+            } else {
+                throw new LogonException("Ошибка! Такого пользователя не найдено");
+            }
+        }
+        if (user[0].getNameUser() != name) {
+            System.out.println("Такого пользователя не найдено!");
+        }
+    }
+
+    public static void createUser(int id) {
+        Scanner newUser = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Создание нового пользователя");
+        System.out.println();
+        System.out.print("Введите имя пользователя: ");
+        String name = newUser.nextLine();
+        System.out.print("Введите пароль пользователя: ");
+        String pwd = newUser.nextLine();
+
+        user[id] = new User(name, pwd);
+        System.out.println("Создан новый пользователь: " + user[id].getNameUser());
+        System.out.println();
+    }
+
+    public static void listUsers() {
+        System.out.println();
+        System.out.println("Список пользователей:");
+        for (int i = 1; i < user.length; i++) {
+            if (user[i] != null) {
+                System.out.println(user[i].getNameUser());
+            }
+        }
+    }
+
+    public static void startMenu() {
+        System.out.println();
+        System.out.println("Текущий пользователь: " + user[0].getNameUser());
+        System.out.println();
+        System.out.println("Основное меню");
+        System.out.println("1. Войти");
+        System.out.println("2. Новый");
+        System.out.println("3. Выйти");
+        System.out.println("4. Написать");
+        System.out.println("5. Прочитать");
+        System.out.println("6. Список пользователей");
+        System.out.println("7. Выход из программы");
+        System.out.println("Выбери вариант меню (нажми цифру):");
     }
 }
+
+
 
