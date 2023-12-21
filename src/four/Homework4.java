@@ -13,16 +13,22 @@ import four.ex3.Builder;
 import four.ex3.Driver;
 import four.ex3.Human;
 import four.ex3.Sound;
-import four.ex4.LogonException;
+import four.ex4.ChatException;
+import four.ex4.Inbox;
+import four.ex4.Outbox;
 import four.ex4.User;
-
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Homework4 {
-
-    public static User[] user = new User[100]; // Для 4-го задания
-    static int id = 1; // Для 4-го задания
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m"; // Красный цвет для ошибок
+    public static User[] user = new User[100]; // Для 4-го задания массив всех пользователей
+    static int id = 1; // Для 4-го задания id пользователя
+    static int idInbox = 0; // Для 4-го задания id входящего сообщения
+    static int idOutbox = 0; // Для 4-го задания id исходящего сообщения
+    public static Inbox[] inbox = new Inbox[100]; // Для 4-го задания массив входящих сообщений
+    public static Outbox[] outbox = new Outbox[100]; // Для 4-го задания массив исходящих сообщений
 
     public static void main(String[] args) {
         System.out.println();
@@ -53,15 +59,15 @@ public class Homework4 {
         //5 автобусов(12х3х2.3)
         //Посчитать, сколько мэрия заплатит денег за мойку машин.
         Vehicle[] vehicles = {
-                new Car(false, new double[]{5, 2, 1.8}, true),
-                new Car(false, new double[]{5, 2, 1.8}, true),
-                new Car(false, new double[]{5, 2, 1.8}, false),
-                new Car(false, new double[]{5, 2, 1.8}, true),
-                new Bus(false, new double[]{12, 3, 2.3}, 10),
-                new Bus(false, new double[]{12, 3, 2.3}, 12),
-                new Bus(false, new double[]{12, 3, 2.3}, 10),
-                new Bus(false, new double[]{12, 3, 2.3}, 8),
-                new Bus(false, new double[]{12, 3, 2.3}, 8)
+            new Car(false, new double[]{5, 2, 1.8}, true),
+            new Car(false, new double[]{5, 2, 1.8}, true),
+            new Car(false, new double[]{5, 2, 1.8}, false),
+            new Car(false, new double[]{5, 2, 1.8}, true),
+            new Bus(false, new double[]{12, 3, 2.3}, 10),
+            new Bus(false, new double[]{12, 3, 2.3}, 12),
+            new Bus(false, new double[]{12, 3, 2.3}, 10),
+            new Bus(false, new double[]{12, 3, 2.3}, 8),
+            new Bus(false, new double[]{12, 3, 2.3}, 8)
         };
         Wash wash1 = new Wash();
         System.out.println(wash1.washingVehicles(vehicles));
@@ -175,7 +181,7 @@ public class Homework4 {
                 case (1): {
                     try {
                         logonUser();
-                    } catch (LogonException e) {
+                    } catch (ChatException e) {
                         System.out.println(e.getMessage());
                     }
                     startMenu();
@@ -188,18 +194,46 @@ public class Homework4 {
                     startMenu();
                     break;
                 }
+                case (3): {
+                    logoffUser();
+                    number = 0;
+                    startMenu();
+                    break;
+                }
+                case (4): {
+                    try {
+                        sendMessage();
+                    } catch (ChatException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    startMenu();
+                    break;
+                }
+                case (5): {
+                    try {
+                        readMessages();
+                    } catch (ChatException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    startMenu();
+                    break;
+                }
                 case (6): {
                     listUsers();
                     number = 0;
                     startMenu();
                     break;
                 }
+                default: {
+                    System.out.println(ANSI_RED + "Выберите корректный вариант" + ANSI_RESET);
+                    startMenu();
+                }
             }
         }
         in.close();
     }
 
-    public static void logonUser() throws LogonException {
+    public static void logonUser() throws ChatException {
         Scanner logonUser = new Scanner(System.in);
         System.out.println();
         System.out.print("Введите имя пользователя: ");
@@ -207,15 +241,16 @@ public class Homework4 {
         System.out.print("Введите пароль пользователя: ");
         String pwd = logonUser.nextLine();
         for (int i = 1; i < user.length; i++) {
-            if (user[i].getNameUser() == name) {
+            if (user[i] == null) {
+                break;
+            } else if (Objects.equals(user[i].getNameUser(), name)) {
                 user[0].setNameUser(name);
                 user[0].setPwdUser(pwd);
-            } else {
-                throw new LogonException("Ошибка! Такого пользователя не найдено");
+                break;
             }
         }
-        if (user[0].getNameUser() != name) {
-            System.out.println("Такого пользователя не найдено!");
+        if (!Objects.equals(user[0].getNameUser(), name)) {
+            throw new ChatException(ANSI_RED + "Ошибка! Такого пользователя не найдено" + ANSI_RESET);
         }
     }
 
@@ -228,10 +263,69 @@ public class Homework4 {
         String name = newUser.nextLine();
         System.out.print("Введите пароль пользователя: ");
         String pwd = newUser.nextLine();
-
         user[id] = new User(name, pwd);
         System.out.println("Создан новый пользователь: " + user[id].getNameUser());
         System.out.println();
+    }
+
+    public static void logoffUser() {
+        user[0].setNameUser("");
+        user[0].setPwdUser("");
+        System.out.println();
+        System.out.println("Пользователь вышел из системы");
+    }
+
+    public static void sendMessage() throws ChatException {
+        if (Objects.equals(user[0].getNameUser(), "")) {
+            throw new ChatException(ANSI_RED + "Ошибка! Вы не авторизованы" + ANSI_RESET);
+        }
+        Scanner sendMessage = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Создать новое сообщение");
+        System.out.print("Кому отправить сообщение: ");
+        String nameUser = sendMessage.nextLine();
+        System.out.print("Текст сообщения: ");
+        String messageUser = sendMessage.nextLine();
+        for (int i = 1; i < user.length; i++) {
+            if (user[i] == null) {
+                throw new ChatException(ANSI_RED + "Ошибка! Такого пользователя нет" + ANSI_RESET);
+            } else if (Objects.equals(user[i].getNameUser(), nameUser)) {
+                inbox[idInbox] = new Inbox(nameUser, messageUser, user[0].getNameUser());
+                idInbox++;
+                outbox[idOutbox] = new Outbox(user[0].getNameUser(), messageUser, nameUser);
+                idOutbox++;
+                break;
+            }
+        }
+        System.out.println();
+        System.out.println("Сообщение отправлено");
+    }
+
+    public static void readMessages() throws ChatException {
+        if (Objects.equals(user[0].getNameUser(), "")) {
+            throw new ChatException(ANSI_RED + "Ошибка! Вы не авторизованы" + ANSI_RESET);
+        }
+        System.out.println();
+        System.out.println("Список всех сообщений текущего пользователя");
+        String nameUser = user[0].getNameUser();
+
+        System.out.println("Входящие сообщения:");
+        int i = 0;
+        while (inbox[i] != null) {
+            if (Objects.equals(inbox[i].getNameUser(), nameUser)) {
+                System.out.println(inbox[i].getFromUser() + ": " + inbox[i].getMessageUser());
+            }
+            i++;
+        }
+
+        System.out.println("Исходящие сообщения:");
+        i = 0;
+        while (outbox[i] != null) {
+            if (Objects.equals(outbox[i].getNameUser(), nameUser)) {
+                System.out.println(outbox[i].getToUser() + ": " + outbox[i].getMessageUser());
+            }
+            i++;
+        }
     }
 
     public static void listUsers() {
